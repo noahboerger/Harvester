@@ -10,7 +10,7 @@ public class Drone implements IDrone{
     }
 
     @Override
-    public LinkedList <Wheat> scanField (){
+    public LinkedList <ScannedWheat> scanField (){
         LinkedList<Wheat> wheatList = new LinkedList<>();
 
         for(int x = 0; x < 10000; x++) {
