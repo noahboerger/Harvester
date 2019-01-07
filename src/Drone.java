@@ -11,11 +11,11 @@ public class Drone implements IDrone{
 
     @Override
     public LinkedList <ScannedWheat> scanField (){
-        LinkedList<Wheat> wheatList = new LinkedList<>();
+        LinkedList<ScannedWheat> wheatList = new LinkedList<>();
 
         for(int x = 0; x < 10000; x++) {
             for (int y = 0 ; y < 10000; y++){
-                wheatList.add(actualField.scanWheatAtPosition(x,y));
+                wheatList.add(new ScannedWheat(x, y, actualField.scanWheatAtPosition(x,y).getNumberOfGrain()));
             }
         }
         wheatList.sort(new WheatComparator());
