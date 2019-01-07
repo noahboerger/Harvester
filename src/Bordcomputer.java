@@ -2,14 +2,14 @@ import java.util.LinkedList;
 
 public class Bordcomputer {
 
-    private  wheatList;
+    private LinkedList<ScannedWheat> wheatList;
 
-    public void setWheatList (LinkedList<Wheat> wheatList){
+    public void setWheatList (LinkedList<ScannedWheat> wheatList){
         this.wheatList = wheatList;
     }
     public Wheat determanWheat (int x, int y){
         Wheat targetWheat;
-        targetWheat = wheatList.
+
         return targetWheat;
     }
 }
