@@ -5,5 +5,5 @@ public class Harvester {
     private Cutting cuttingInnerRight;
     private Cutting cuttingRight;
 
-    private ILight light
+    private ILight light;
 }

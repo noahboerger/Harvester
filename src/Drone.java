@@ -1,14 +1,16 @@
 import java.util.Comparator;
 import java.util.LinkedList;
 
-public class Drone extends IDrone{
+public class Drone implements IDrone{
     private Field actualField;
 
+    @Override
     public void setActualField (Field actualField){
         this.actualField = actualField;
     }
 
-    public LinkedList <Wheat> scanField (Field field){
+    @Override
+    public LinkedList <Wheat> scanField (){
         LinkedList<Wheat> wheatList = new LinkedList<>();
 
         for(int x = 0; x < 10000; x++) {
@@ -16,7 +18,7 @@ public class Drone extends IDrone{
                 wheatList.add(actualField.scanWheatAtPosition(x,y));
             }
         }
-        wheatList.sort();
+        wheatList.sort(new WheatComparator());
 
         return wheatList;
     }
