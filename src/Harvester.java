@@ -26,5 +26,6 @@ public class Harvester {
     private ILight leftBackLight;
     private ILight rightBackLight;
 
+    private Bordcomputer bordcomputer;
 
 }
