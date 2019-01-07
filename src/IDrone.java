@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
 public interface IDrone {
-    LinkedList<Wheat> scanField();
+    LinkedList<ScannedWheat> scanField();
     void setActualField (Field field);
 }

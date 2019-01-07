@@ -1,21 +1,15 @@
 public class ScannedWheat {
-    private int xPos;
-    private int yPos;
+    Position position;
 
     private int numberOfGrain;
 
-    public ScannedWheat(int xPos, int yPos, int numberOfGrain) {
-        this.xPos = xPos;
-        this.yPos = yPos;
+    public ScannedWheat(Position position, int numberOfGrain) {
+        this.position = position;
         this.numberOfGrain = numberOfGrain;
     }
 
-    public int getxPos() {
-        return xPos;
-    }
-
-    public int getyPos() {
-        return yPos;
+    public Position getPosition() {
+        return position;
     }
 
     public int getNumberOfGrain() {

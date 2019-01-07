@@ -10,7 +10,7 @@ public class Field {
         }
     }
 
-    public Wheat scanWheatAtPosition(int x, int y) {
-        return wheatField[x][y];
+    public Wheat scanWheatAtPosition(Position position) {
+        return wheatField[position.getX()][position.getY()];
     }
 }
