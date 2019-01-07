@@ -4,5 +4,5 @@ public interface IHarvester {
     void startHarvesting();
     void endHarvesting();
     void sendDrone();
-    
+    void harvester();
 }
