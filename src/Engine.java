@@ -1,4 +1,4 @@
-public class Engine implements  IEngine{
+public class Engine implements IEngine {
     private String manufacturer;
     private boolean isOn;
     private int speed;
@@ -11,15 +11,18 @@ public class Engine implements  IEngine{
         this.highSpeed = highSpeed;
     }
 
+    @Override
     public void start() {
         isOn = true;
     }
 
+    @Override
     public void stop() {
         isOn = false;
         speed = 0;
     }
 
+    @Override
     public boolean faster() {
         if (isOn && (speed < highSpeed)) {
             speed++;
@@ -29,6 +32,7 @@ public class Engine implements  IEngine{
         }
     }
 
+    @Override
     public boolean slower() {
         if (isOn && (speed > -highSpeed)) {
             speed--;
@@ -38,6 +42,7 @@ public class Engine implements  IEngine{
         }
     }
 
+    @Override
     public String getManufacturer() {
         return manufacturer;
     }

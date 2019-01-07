@@ -8,18 +8,22 @@ public class Light implements ILight {
         isOn = false;
     }
 
+    @Override
     public void turnOn() {
         isOn = false;
     }
 
+    @Override
     public void turnOff() {
         isOn = false;
     }
 
+    @Override
     public LightType getLightType() {
         return lightType;
     }
 
+    @Override
     public boolean isOn() {
         return isOn;
     }
