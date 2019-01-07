@@ -1,4 +1,3 @@
-import java.util.Comparator;
 import java.util.LinkedList;
 
 public class Drone implements IDrone{
@@ -18,7 +17,7 @@ public class Drone implements IDrone{
                 wheatList.add(actualField.scanWheatAtPosition(x,y));
             }
         }
-        wheatList.sort(new WheatComparator());
+        wheatList.sort(new ScannedWheatComparator());
 
         return wheatList;
     }
