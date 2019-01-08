@@ -1,8 +1,9 @@
+import java.util.LinkedList;
+
 public interface IHarvester {
     void turnLeft();
     void turnRight();
-    void startHarvesting();
+    void startHarvesting(LinkedList<ScannedWheat> wheatList);
     void endHarvesting();
-    void sendDrone();
-    void harvester();
+    LinkedList<ScannedWheat> sendDrone(IField field);
 }

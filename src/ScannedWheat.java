@@ -1,18 +1,18 @@
 public class ScannedWheat {
     Position position;
 
-    private int numberOfGrain;
+    private Wheat wheat;
 
-    public ScannedWheat(Position position, int numberOfGrain) {
+    public ScannedWheat(Position position, Wheat wheat) {
         this.position = position;
-        this.numberOfGrain = numberOfGrain;
+        this.wheat = wheat;
     }
 
     public Position getPosition() {
         return position;
     }
 
-    public int getNumberOfGrain() {
-        return numberOfGrain;
+    public Wheat getWheat() {
+        return wheat;
     }
 }

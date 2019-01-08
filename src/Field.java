@@ -1,4 +1,4 @@
-public class Field {
+public class Field implements IField{
     Wheat[][] wheatField;
 
     public Field() {
