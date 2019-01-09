@@ -1,6 +1,9 @@
 import java.util.LinkedList;
+import java.util.List;
 
 public class Harvester implements IHarvester {
+
+    boolean isRunning;
 
     private IEngine engine;
     private IDrone drone;
@@ -30,12 +33,13 @@ public class Harvester implements IHarvester {
     private ILight rightBackLight;
 
 
-    private BordComputer bordcomputer;
+    private BordComputer bordComputer;
 
 
     public Harvester() {
         engine = new Engine("BMW", 5);
         drone = new Drone();
+        bordComputer = new BordComputer();
 
         cuttingLeft = new Cutting();
         cuttingInnerLeft = new Cutting();
@@ -64,40 +68,89 @@ public class Harvester implements IHarvester {
 
     @Override
     public void turnLeft() {
-        this.leftFrontTurnSignal.turnOn();
-        this.leftRearTurnSignal.turnOn();
-        leftRearTurnSignal.turnOff();
-        leftFrontTurnSignal.turnOff();
+        if (isRunning) {
+            this.leftFrontTurnSignal.turnOn();
+            this.leftRearTurnSignal.turnOn();
+            leftRearTurnSignal.turnOff();
+            leftFrontTurnSignal.turnOff();
+        }
     }
 
     @Override
     public void turnRight() {
-        rightFrontTurnSignal.turnOn();
-        rightRearTurnSignal.turnOn();
-        rightRearTurnSignal.turnOff();
-        rightFrontTurnSignal.turnOff();
+        if (isRunning) {
+            rightFrontTurnSignal.turnOn();
+            rightRearTurnSignal.turnOn();
+            rightRearTurnSignal.turnOff();
+            rightFrontTurnSignal.turnOff();
+        }
     }
 
     @Override
-    public void startHarvesting(LinkedList<ScannedWheat> wheatList) {
+    public void startHarvester() {
         engine.start();
-        bordcomputer = new BordComputer(wheatList);
-        bordcomputer.getScannedWheatAtPos(new Position(1,2));
+        rightFrontLight.turnOn();
+        leftFrontLight.turnOn();
+        rightBackLight.turnOn();
+        leftBackLight.turnOn();
         engine.faster();
-        engine.slower();
+        isRunning = true;
+    }
 
+    @Override
+    public void stopHarvester() {
+        leftBrakeLight.turnOn();
+        rightBrakeLight.turnOn();
+        engine.stop();
+        rightFrontLight.turnOff();
+        leftFrontLight.turnOff();
+        rightBackLight.turnOff();
+        leftBackLight.turnOff();
+        leftBrakeLight.turnOff();
+        isRunning = false;
+    }
+
+    @Override
+    public void startHarvesting() {
+        if (isRunning) {
+            rightBeam.turnOn();
+            leftBeam.turnOn();
+            cuttingLeft.setOn(true);
+            cuttingInnerLeft.setOn(true);
+            cuttingInnerRight.setOn(true);
+            cuttingRight.setOn(true);
+        }
     }
 
     @Override
     public void endHarvesting() {
-        engine.stop();
+        if (isRunning) {
+            rightBeam.turnOff();
+            leftBeam.turnOff();
+            cuttingLeft.setOn(false);
+            cuttingInnerLeft.setOn(false);
+            cuttingInnerRight.setOn(false);
+            cuttingRight.setOn(false);
+        }
     }
 
     @Override
-    public LinkedList<ScannedWheat> sendDrone(IField field) {
-        drone.setActualField(field);
-        return drone.scanField();
+    public List<ScannedWheat> sendDrone(IField field) {
+        if(isRunning) {
+            List<ScannedWheat> scannedWheatList = drone.scanField(field);
+            bordComputer.setScannedWheatList(scannedWheatList);
+            return scannedWheatList;
+        }else {
+            return null;
+        }
     }
 
-
+    @Override
+    public Wheat getWheatAt(Position position) {
+        if(isRunning) {
+            return bordComputer.getScannedWheatAt(position).getWheat();
+        } else {
+            return null;
+        }
+    }
 }

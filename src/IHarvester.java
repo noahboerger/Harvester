@@ -1,9 +1,20 @@
 import java.util.LinkedList;
+import java.util.List;
 
 public interface IHarvester {
     void turnLeft();
+
     void turnRight();
-    void startHarvesting(LinkedList<ScannedWheat> wheatList);
+
+    void startHarvester();
+
+    void stopHarvester();
+
+    void startHarvesting();
+
     void endHarvesting();
-    LinkedList<ScannedWheat> sendDrone(IField field);
+
+    List<ScannedWheat> sendDrone(IField field);
+
+    Wheat getWheatAt(Position position);
 }

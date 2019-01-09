@@ -1,4 +1,6 @@
-public class Position {
+import javax.lang.model.element.NestingKind;
+
+public class Position implements Comparable<Position> {
     private int x;
     private int y;
 
@@ -21,5 +23,18 @@ public class Position {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int compareTo(Position position) {
+        if (position.getX() != x) {
+            return x - position.getX();
+        } else {
+            return y - position.getY();
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "PosX=" + x + " PosY=" + y;
     }
 }

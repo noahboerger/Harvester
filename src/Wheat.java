@@ -17,4 +17,9 @@ public class Wheat {
         randomInt = (randomInt % 401) + 100;
         return randomInt;
     }
+
+    @Override
+    public String toString() {
+        return numberOfGrain + "";
+    }
 }

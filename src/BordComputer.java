@@ -1,24 +1,36 @@
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.TreeMap;
+import java.util.List;
 
-public class BordComputer implements IBordComputer{
+public class BordComputer implements IBordComputer {
 
-    private LinkedList<ScannedWheat> scannedWheatList;
-    private TreeMap<Position,ScannedWheat> scannedWheatMap;
+    private TreeMap<Position, ScannedWheat> scannedWheatMap;
 
+    public BordComputer() {
+    }
 
     public BordComputer(LinkedList<ScannedWheat> scannedWheatList) {
-        this.scannedWheatList = scannedWheatList;
-        for (ScannedWheat w: scannedWheatList
-             ) {
-            scannedWheatMap.put(w.getPosition(),w);
+        scannedWheatMap = new TreeMap<>();
+        for (ScannedWheat scannedWheat : scannedWheatList) {
+            scannedWheatMap.put(scannedWheat.getPosition(), scannedWheat);
         }
     }
 
+    @Override
+    public void setScannedWheatList(List<ScannedWheat> scannedWheatList) {
+        scannedWheatMap = new TreeMap<>();
+        for (ScannedWheat scannedWheat : scannedWheatList) {
+            scannedWheatMap.put(scannedWheat.getPosition(), scannedWheat);
+        }
+    }
 
-    public ScannedWheat getScannedWheatAtPos(Position position) {
-
-        return scannedWheatMap.get(position);
+    @Override
+    public ScannedWheat getScannedWheatAt(Position position) {
+        if (scannedWheatMap == null) {
+            return null;
+        } else {
+            return scannedWheatMap.get(position);
+        }
     }
 }
