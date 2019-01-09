@@ -1,5 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Harvester implements IHarvester {
 
@@ -99,6 +101,7 @@ public class Harvester implements IHarvester {
 
     @Override
     public void stopHarvester() {
+        endHarvesting();
         leftBrakeLight.turnOn();
         rightBrakeLight.turnOn();
         engine.stop();
@@ -152,5 +155,10 @@ public class Harvester implements IHarvester {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public TreeSet<ScannedWheat> getScannedWheatSet() {
+        return bordComputer.getScannedWheatSet();
     }
 }

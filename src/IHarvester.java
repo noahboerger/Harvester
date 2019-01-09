@@ -1,5 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public interface IHarvester {
     void turnLeft();
@@ -17,4 +19,6 @@ public interface IHarvester {
     List<ScannedWheat> sendDrone(IField field);
 
     Wheat getWheatAt(Position position);
+
+    TreeSet<ScannedWheat> getScannedWheatSet();
 }

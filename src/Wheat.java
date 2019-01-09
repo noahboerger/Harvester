@@ -13,13 +13,13 @@ public class Wheat {
 
     private int getRandomNumberOfGrain() {
         Random random = new Random();
-        int randomInt = random.nextInt();
+        int randomInt = Math.abs(random.nextInt());
         randomInt = (randomInt % 401) + 100;
         return randomInt;
     }
 
     @Override
     public String toString() {
-        return numberOfGrain + "";
+        return "NumberOfGrain: " + numberOfGrain;
     }
 }

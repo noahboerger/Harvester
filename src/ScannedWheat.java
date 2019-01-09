@@ -15,4 +15,9 @@ public class ScannedWheat {
     public Wheat getWheat() {
         return wheat;
     }
+
+    @Override
+    public String toString() {
+        return wheat + " Position: " + position;
+    }
 }
